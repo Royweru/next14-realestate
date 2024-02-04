@@ -3,7 +3,7 @@ import React from 'react'
 
 export const LoginForm = () => {
   return (
-    <div className=' w-[500px] flex flex-col gap-y-5 bg-cyan-200'>
+    <div className=' w-[500px] flex flex-col gap-y-5 bg-cyan-200 h-full py-12 '>
       <h1 className=' text-lg font-serif font-bold '>
         LOGIN CARD
       </h1>

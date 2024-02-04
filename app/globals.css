@@ -27,7 +27,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-    background-color: whitesmoke;
+    background-color: rgba(247, 242, 242, 0.308);
    
 }
 
