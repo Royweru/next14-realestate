@@ -4,7 +4,7 @@ import React from 'react'
 
 export const Logo = () => {
   return (
-   <div className=' h-[50px] w-[50px] relative '>
+   <div className=' h-[50px] w-[110px] relative '>
       <Image
          src={"/pictures/logo.png"}
          fill
