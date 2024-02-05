@@ -4,6 +4,7 @@ import bcrypt from "bcrypt"
 import { RegisterSchema } from "@/schemas"
 
 import prisma from "@/lib/prismadb"
+import { getUserByEmail } from "@/data/user"
 
 export const register =async (values:z.infer<typeof RegisterSchema>) => {
     const validatedFields = RegisterSchema.safeParse(values)
@@ -14,11 +15,9 @@ export const register =async (values:z.infer<typeof RegisterSchema>) => {
 
     const hashedPwd = await bcrypt.hash(password,10)
 
-    const exsistingUser = await prisma.user.findUnique({
-        where:{
-            email
-        }
-    })
+    const exsistingUser = await getUserByEmail(email)
+
+    
     if(exsistingUser)return {error:"Email already exists!"}
 
     await prisma.user.create({

@@ -17,6 +17,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { register } from "@/actions/register";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 export const SignUpModal = () => {
   const [success, setSuccess] = useState<string | undefined>("");
@@ -46,9 +47,13 @@ export const SignUpModal = () => {
   const isLoading = form.formState.isSubmitting;
   return (
     <Dialog open={modalOpen} onOpenChange={onClose}>
-      <DialogContent className=" bg-zinc-200 overflow-hidden ">
+      <DialogContent className=" bg-white overflow-hidden ">
         <DialogHeader>
-          <DialogTitle>SIGN UP</DialogTitle>
+          <DialogTitle>
+            <h1 className=" font-semibold text-xl font-serif text-center">
+              SIGN UP FOR APARTAMENTI
+            </h1>
+          </DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -104,18 +109,32 @@ export const SignUpModal = () => {
             </div>
           </form>
         </Form>
-       
+
         <DialogFooter>
-        {err && (
-          <div className=" w-full bg-destructive p-3 text-xl font-mono mt-2 font-semibold">
-            {err}
-          </div>
-        )}
-        {success && (
-          <div className=" w-full bg-emerald-300 p-3 text-xl font-mono mt-2 font-semibold">
-            {success}
-          </div>
-        )}
+          {err && (
+            <div
+              className=" w-full bg-destructive p-3 text-xl font-mono 
+          mt-2 font-semibold text-center rounded-lg"
+            >
+              {err}
+            </div>
+          )}
+          {success && (
+            <div
+              className=" w-full bg-emerald-300 p-3 text-xl
+           font-mono mt-2 font-semibold text-center rounded-lg"
+            >
+              {success}
+            </div>
+          )}
+        </DialogFooter>
+        <DialogFooter className=" w-full ">
+          <Button variant="outline" className=" w-full">
+            <FaGoogle className=" h-5 w-5"/>
+          </Button>
+          <Button variant="outline" className=" w-full">
+            <FaGithub className=" h-5 w-5" />
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
