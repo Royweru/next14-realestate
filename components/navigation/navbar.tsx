@@ -29,7 +29,7 @@ const Navbar = () => {
         '>
           {navigation.map((nav)=>(
           <Link href={nav.href} key={nav.href}>
-            <div key={nav.href} className='p-3 rounded-2xl
+            <div key={nav.href} className='py-3 px-5 rounded-2xl
              bg-zinc-700/50 text-white font-bold font-serif
               hover:opacity-85 hover:cursor-pointer
              '
