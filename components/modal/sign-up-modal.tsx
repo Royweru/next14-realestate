@@ -19,6 +19,7 @@ import { Button } from "../ui/button";
 import { register } from "@/actions/register";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { Social } from "../auth/social";
 
 export const SignUpModal = () => {
   const [success, setSuccess] = useState<string | undefined>("");
@@ -132,12 +133,7 @@ export const SignUpModal = () => {
           )}
         </DialogFooter>
         <DialogFooter className=" w-full ">
-          <Button variant="outline" className=" w-full">
-            <FaGoogle className=" h-5 w-5"/>
-          </Button>
-          <Button variant="outline" className=" w-full">
-            <FaGithub className=" h-5 w-5" />
-          </Button>
+        <Social />
         </DialogFooter>
         <DialogFooter>
           <div className=" w-full text-xl text-center font-semibold font-serif underline ">

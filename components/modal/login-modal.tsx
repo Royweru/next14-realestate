@@ -20,8 +20,10 @@ import { useForm } from "react-hook-form";
 import { LoginSchema } from "@/schemas";
 import { login } from "@/actions/login";
 import { FaGithub, FaGithubAlt, FaGoogle, FaGooglePlus } from "react-icons/fa";
+import { Social } from "../auth/social";
 
 export const LoginModal = () => {
+  
   const[err,setErr] = useState<string|undefined>("")
   const[success,setSuccess] = useState<string|undefined>("")
   const { isOpen, onOpen, onClose, type } = useModal();
@@ -103,12 +105,7 @@ export const LoginModal = () => {
           </form>
         </Form>
         <DialogFooter className=" w-full ">
-          <Button variant="outline" className=" w-full">
-            <FaGoogle className=" h-5 w-5"/>
-          </Button>
-          <Button variant="outline" className=" w-full">
-           <FaGithub className=" w-5 h-5" />
-          </Button>
+          <Social />
         </DialogFooter>
         <DialogFooter>
           <div className=" w-full text-xl text-center font-semibold font-serif underline ">
