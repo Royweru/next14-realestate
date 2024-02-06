@@ -18,12 +18,15 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { register } from "@/actions/register";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 export const SignUpModal = () => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [err, setErr] = useState<string | undefined>("");
-  const { isOpen, onClose, type } = useModal();
+  const { isOpen, onClose, type,onOpen } = useModal();
   const modalOpen = isOpen && type === "sign-up";
+
+  const router = useRouter()
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
@@ -135,6 +138,13 @@ export const SignUpModal = () => {
           <Button variant="outline" className=" w-full">
             <FaGithub className=" h-5 w-5" />
           </Button>
+        </DialogFooter>
+        <DialogFooter>
+          <div className=" w-full text-xl text-center font-semibold font-serif underline ">
+             <Button variant="link" className=" w-full" onClick={()=>onOpen("login")}>
+               Already have an account? Login
+             </Button>
+          </div>
         </DialogFooter>
       </DialogContent>
     </Dialog>

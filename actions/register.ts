@@ -1,6 +1,6 @@
 "use server"
 import *as z from "zod"
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
 import { RegisterSchema } from "@/schemas"
 
 import prisma from "@/lib/prismadb"
