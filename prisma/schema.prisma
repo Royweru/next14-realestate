@@ -8,43 +8,113 @@ generator client {
 // prisma/schema.prisma
 datasource db {
   provider  = "postgresql"
-  url  	    = env("DATABASE_URL")
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
-enum UserRole{
+enum UserRole {
   ADMIN
   USER
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?
-  role          UserRole @default(USER)
-  accounts      Account[]
-  isTwoFactorEnabled Boolean @default(false)
+  id                 String    @id @default(cuid())
+  name               String?
+  email              String?   @unique
+  emailVerified      DateTime?
+  image              String?
+  password           String?
+  role               UserRole  @default(USER)
+  accounts           Account[]
+  isTwoFactorEnabled Boolean   @default(false)
 
+  listings Listing[]
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model Category {
+  id           String @id @default(cuid())
+  name         String
+  bedroomCount String
+
+  listings Listing[]
+
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model Location {
+  id        String    @id @default(cuid())
+
+  County   String
+  Constituency String
+
+  listings  Listing[]
+
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model Listing {
+  id String @id @default(cuid())
+
+  userId String 
+  agent User @relation(fields: [userId],references: [id],onDelete: Cascade)
+
+  locationId String
+  location   Location @relation(fields: [locationId], references: [id])
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  title         String
+  description   String
+  bathroomCount String
+  amenities    Amenity[]
+  constituency   String
+  ward          String
+  area          String
+  images        Image[]
+  rentalPrice   Decimal?
+  purchasePrice Decimal?
+
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  
+}
+
+model Amenity {
+  id    String  @id @default(cuid())
+  details String
+
+  lisitingId String
+  listing    Listing @relation(fields: [lisitingId], references: [id])
+}
+
+model Image {
+  id String @id @default(cuid())
+
+  url String
+
+  listingId String
+  listing   Listing @relation(fields: [listingId], references: [id])
 }
