@@ -16,7 +16,7 @@ export const Search = () => {
       </div>
       <div className=" w-full px-32 flex justify-center items-center">
        <button className=" py-2 px-1 hover:opacity-90 hover:cursor-pointer 
-       bg-transparent  hover:bg-zinc-300
+       bg-transparent  hover:bg-emerald-200
        rounded-3xl w-2/5 flex justify-center text-xl font-serif font-semibold items-center ">
          <FaSearch className=" w-12 h-12 mr-4" />
          GO

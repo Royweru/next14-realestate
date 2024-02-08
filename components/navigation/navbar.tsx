@@ -24,14 +24,14 @@ const Navbar = () => {
         <div className=' '>
             <Logo />
         </div>
-        <nav className=' w-2/3 border  bg-white text-red-400 py-4 rounded-md
+        <nav className=' w-2/3 border  bg-transparent text-red-400 py-3 rounded-md
          flex justify-center items-center gap-x-6
         '>
           {navigation.map((nav)=>(
           <Link href={nav.href} key={nav.href}>
             <div key={nav.href} className='py-3 px-5 rounded-2xl
-             bg-zinc-700/50 text-white font-bold font-serif
-              hover:opacity-85 hover:cursor-pointer
+              text-neutral-600 font-bold font-serif
+              hover:opacity-85 hover:cursor-pointer hover:bg-emerald-500 hover:text-white
              '
              >
                {nav.label}

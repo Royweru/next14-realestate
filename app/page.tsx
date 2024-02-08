@@ -1,3 +1,4 @@
+import ShuffleHero from "@/components/featured-section";
 import { Hero } from "@/components/hero";
 import { Search } from "@/components/search";
 
@@ -10,6 +11,7 @@ export default async function Home() {
       <Hero >
         <Search />
       </Hero>
+      <ShuffleHero />
     </main>
   );
 }

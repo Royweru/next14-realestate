@@ -8,7 +8,6 @@ import { DEFAULT_LOGIN_REDIRECT } from '@/routes'
 import { FaGithub } from 'react-icons/fa'
 import {FcGoogle} from "react-icons/fc"
 
-import google from 'next-auth/providers/google'
 
 export const Social = () => {
 
