@@ -27,7 +27,7 @@ model User {
   role               UserRole  @default(USER)
   accounts           Account[]
   isTwoFactorEnabled Boolean   @default(false)
-
+  favouriteIds String[] 
   listings Listing[]
 }
 
@@ -61,17 +61,6 @@ model Category {
   createdAt DateTime @default(now())
 }
 
-model Location {
-  id        String    @id @default(cuid())
-
-  County   String
-  Constituency String
-
-  listings  Listing[]
-
-  updatedAt DateTime @updatedAt
-  createdAt DateTime @default(now())
-}
 
 model Listing {
   id String @id @default(cuid())
@@ -79,19 +68,19 @@ model Listing {
   userId String 
   agent User @relation(fields: [userId],references: [id],onDelete: Cascade)
 
-  locationId String
-  location   Location @relation(fields: [locationId], references: [id])
-
+  County String
+  subCounty String
+  area String
+  
   categoryId String
   category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
   title         String
   description   String
   bathroomCount String
-  amenities    Amenity[]
-  constituency   String
-  ward          String
-  area          String
+  amenities    String
+  
+  coverage      String
   images        Image[]
   rentalPrice   Decimal?
   purchasePrice Decimal?
@@ -102,13 +91,6 @@ model Listing {
   
 }
 
-model Amenity {
-  id    String  @id @default(cuid())
-  details String
-
-  lisitingId String
-  listing    Listing @relation(fields: [lisitingId], references: [id])
-}
 
 model Image {
   id String @id @default(cuid())

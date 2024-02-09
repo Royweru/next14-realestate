@@ -11,7 +11,7 @@ export const AuthButton = () => {
     font-serif font-semibold rounded-md hover:cursor-pointer hover:opacity-70 
       bg-transparent hover:bg-emerald-200 hover:underline
     '
-    onClick={()=>onOpen("sign-up")}
+    onClick={()=>onOpen("login")}
     >
        Login/Sign Up  
     </div>
