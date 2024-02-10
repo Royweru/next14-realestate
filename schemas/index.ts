@@ -17,3 +17,12 @@ export const RegisterSchema = z.object({
         message:"Name is required"
     })
 })
+
+
+export const SearchSchema = z.object({
+       county:z.string().optional(),
+       subCounty:z.string().optional(),
+       categoryId:z.string().optional(),
+       minPrice:z.coerce.number().optional(),
+       maxPrice:z.coerce.number().optional()
+})

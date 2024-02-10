@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { CreateHero } from '@/components/create-hero'
+import { CreateListingForm } from './components/create-listing-from'
 
 interface CreatePageProps{
    params:{
@@ -8,7 +9,10 @@ interface CreatePageProps{
 }
 const CreatePage = ({params}:CreatePageProps) => {
   return (
-    <div>CreatePage</div>
+    <div className=" w-full h-full flex flex-col min-h-screen py-16">
+      <CreateHero />
+      <CreateListingForm />
+    </div>
   )
 }
 

@@ -1,10 +1,13 @@
+"use client"
 import React from 'react'
 
 import { Logo } from './logo'
 import { AuthButton } from './auth-button'
 import Link from 'next/link'
+import { cn } from '@/lib/utils'
+import { usePathname } from 'next/navigation'
 const Navbar = () => {
-
+    const pathName = usePathname()
     const navigation = [
       {
         label:"Home",
@@ -20,7 +23,9 @@ const Navbar = () => {
       },
     ]
   return (
-    <div className=' w-full rounded-md p-2 flex justify-between items-center py-2 border-b-2 border-zinc-300'>
+    <div className={cn(' w-full rounded-md p-2 flex justify-between items-center py-2 border-b-2 border-zinc-300',
+      pathName==="/create/new"&&"hidden"
+    )}>
         <div className=' '>
             <Logo />
         </div>

@@ -21,9 +21,10 @@ import { LoginSchema } from "@/schemas";
 import { login } from "@/actions/login";
 import { FaGithub, FaGithubAlt, FaGoogle, FaGooglePlus } from "react-icons/fa";
 import { Social } from "../auth/social";
+import { useRouter } from "next/navigation";
 
 export const LoginModal = () => {
-  
+  const router = useRouter()
   const[err,setErr] = useState<string|undefined>("")
   const[success,setSuccess] = useState<string|undefined>("")
   const { isOpen, onOpen, onClose, type } = useModal();
@@ -42,6 +43,7 @@ export const LoginModal = () => {
       login(vals).then((data)=>{
         setErr(data?.error)
         form.reset()
+        router.push("/")
       });
     });
   };
