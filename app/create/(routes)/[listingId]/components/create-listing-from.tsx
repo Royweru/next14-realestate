@@ -21,6 +21,9 @@ import { Category, Size } from "@prisma/client";
 import { Input } from "@/components/ui/input";
 import { ImageUpload } from "@/components/image-upload";
 import { data } from "@/lib/data";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 interface CreateListingFormProps {
   categories: Category[];
@@ -339,11 +342,103 @@ export const CreateListingForm = (
               control={form.control}
               render={({field})=>(
                 <FormItem>
-                  
+                   <FormControl>
+                    <Checkbox checked={field.value} onChange={field.onChange} />
+                   </FormControl>
+                   <div className=" space-y-2 leading-none">
+                    <FormLabel>
+                       Parking available
+                    </FormLabel>
+                      <FormDescription>
+                        This is very crutial information to your buyers and tenants only check the box is true,if ample parking space is available please check the box
+                      </FormDescription>
+                   </div>
                 </FormItem>
               )}
              />
              <FormField
+              name="security"
+              control={form.control}
+              render={({field})=>(
+                <FormItem>
+                   <FormControl>
+                    <Checkbox checked={field.value} onChange={field.onChange} />
+                   </FormControl>
+                   <div className=" space-y-2 leading-none">
+                    <FormLabel>
+                       Is security avaible
+                    </FormLabel>
+                      <FormDescription>
+                        This is very crutial information to your buyers and tenants only check the box is true,if 
+                        you have security or security services please check the box
+                      </FormDescription>
+                   </div>
+                </FormItem>
+              )}
+             />
+             <FormField
+              name="internetCoverage"
+              control={form.control}
+              render={({field})=>(
+                <FormItem>
+                   <FormControl>
+                    <Checkbox checked={field.value} onChange={field.onChange} />
+                   </FormControl>
+                   <div className=" space-y-2 leading-none">
+                    <FormLabel>
+                       Internet availabilty
+                    </FormLabel>
+                      <FormDescription>
+                        This is very crutial information to your buyers and tenants only check the box is true,if 
+                        there is internet coverage please check the box
+                      </FormDescription>
+                   </div>
+                </FormItem>
+              )}
+             />
+             <FormField
+              name="waterSupply"
+              control={form.control}
+              render={({field})=>(
+                <FormItem>
+                   <FormControl>
+                    <Checkbox checked={field.value} onChange={field.onChange} />
+                   </FormControl>
+                   <div className=" space-y-2 leading-none">
+                    <FormLabel>
+                       Water supply availabilty
+                    </FormLabel>
+                      <FormDescription>
+                        This is very crutial information to your buyers and tenants only check the box is true,if there is consistent water supply check the box ,if water supply is not consistent leave it unchecked
+                      </FormDescription>
+                   </div>
+                </FormItem>
+              )}
+             />
+             <FormField
+              name="pool"
+              control={form.control}
+              render={({field})=>(
+                <FormItem>
+                   <FormControl>
+                    <Checkbox checked={field.value} onChange={field.onChange} />
+                   </FormControl>
+                   <div className=" space-y-2 leading-none">
+                    <FormLabel>
+                       Parking available
+                    </FormLabel>
+                      <FormDescription>
+                        This is very crutial information to your buyers and tenants only check the box is true,if 
+                        there is a swimmming pool please check the box
+                      </FormDescription>
+                   </div>
+                </FormItem>
+              )}
+             />
+          
+          </div>
+          <div className=" w-full flex content-center justify-center">
+          <FormField
                  name="amenities"
                  control={form.control}
                  render={({field})=>(
@@ -354,10 +449,20 @@ export const CreateListingForm = (
                      <FormDescription>
                       This includes any extra amenity that you would like to add
                      </FormDescription>
-                     
+                     <FormControl>
+                      <Textarea
+                         
+                         {...field}
+                      />
+                     </FormControl>
                   </FormItem>
                  )}
              />
+          </div>
+          <div className=" w-full py-6 px-7">
+              <Button className=" w-full" variant="secondary" type="submit">
+                 SUBMIT
+              </Button>
           </div>
           </form>
       </Form>
