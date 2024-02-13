@@ -13,7 +13,7 @@ export const Header = ({
         <h1 className=' text-2xl font-bold text-emerald-800 font-serif underline text-center'>
          {title}
         </h1>
-        <p className=' font-serif text-sm font-semibold text-neutral-600'>
+        <p className=' font-serif text-sm font-semibold text-neutral-600 text-center'>
           {subTitle}
         </p>
     </div>

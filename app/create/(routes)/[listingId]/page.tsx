@@ -11,10 +11,11 @@ interface CreatePageProps{
 
 const CreatePage =async ({params}:CreatePageProps) => {
     const categories = await prisma.category.findMany()
+    const sizes = await prisma.size.findMany()
   return (
     <div className=" w-full h-full flex flex-col min-h-screen py-10">
       <CreateHero />
-      <CreateListingForm data={categories} />
+      <CreateListingForm categories={categories} sizes={sizes}/>
     </div>
   )
 }

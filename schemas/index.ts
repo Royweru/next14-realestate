@@ -48,7 +48,10 @@ export const formSchema = z.object({
         message:"the area is required"
     }),
     categoryId:z.string().min(1,{
-        message:"categoryId is required"
+        message:"category id is required"
+    }),
+    sizeId:z.string().min(1,{
+        message:"size id is required"
     }),
     coverage:z.string().min(1,{
         message:"The area coverage is required"
