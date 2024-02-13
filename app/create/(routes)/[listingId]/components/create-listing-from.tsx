@@ -49,24 +49,10 @@ export const CreateListingForm = (
     },
   });
 
-  const [subCounties, setSubCounties] = useState<string[]|undefined>([]);
-  const [sub, setSub] = useState("");
-  const [selectedCounty, setSelectedCounty] = useState("");
-
-  useEffect(() => {
-    if (data) {
-       const county = data.find((county)=>county.name===selectedCounty)
-       
-       
-    }
-
-  }, [setSubCounties,selectedCounty]);
 
   const onSubmit = (vals: z.infer<typeof formSchema>) => {
     console.log(vals);
   };
-
-
 
   const isLoading = form.formState.isSubmitting;
   return (
@@ -306,11 +292,75 @@ export const CreateListingForm = (
              )}
              />
           </div>
-         <div className=" w-full flex justify-center items-center">
-            
-         </div>
-        </form>
+          <Header title="More details..." />
+         <div className=" grid grid-cols-2 gap-5 w-full py-8">
+          <FormField
+           name="coverage"
+           control={form.control}
+           render={({field})=>(
+            <FormItem>
+               <FormLabel>
+                THe area coverage of your property
+               </FormLabel>
+               <FormDescription>
+                  This should be in metre square
+               </FormDescription>
+               <FormControl>
+                <Input
+                  placeholder="50,000m2"
+                  {...field}
+                />
+               </FormControl>
+            </FormItem>
+           )}
+          />
+          <FormField
+           name="bathroomCount"
+           control={form.control}
+           render={({field})=>(
+            <FormItem>
+               <FormLabel>
+               number of bathrooms:
+               </FormLabel>
+               <FormControl>
+                <Input
+                  type="number"
+                  {...field}
+                />
+               </FormControl>
+            </FormItem>
+           )}
+          />
+          </div>
+             <Header title="Amenties and features" />
+          <div className=" grid grid-cols-4 sm:grid-cols-3 gap-5 w-full px-4">
+             <FormField
+              name="parking"
+              control={form.control}
+              render={({field})=>(
+                <FormItem>
+                  
+                </FormItem>
+              )}
+             />
+             <FormField
+                 name="amenities"
+                 control={form.control}
+                 render={({field})=>(
+                  <FormItem>
+                     <FormLabel>
+                        Extra special amenities
+                     </FormLabel>
+                     <FormDescription>
+                      This includes any extra amenity that you would like to add
+                     </FormDescription>
+                     
+                  </FormItem>
+                 )}
+             />
+          </div>
+          </form>
       </Form>
     </div>
   );
-};
+}

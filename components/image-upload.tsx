@@ -23,8 +23,8 @@ export const ImageUpload = ({
          onChange(result.info.secure_url)
     }
   return (
-    <div>
-        <div className=' w-full flex items-center mb-4 gap-3'>
+    <div className=' px-5'>
+        <div className=' w-full flex flex-wrap items-center mb-4 gap-3'>
             {value?.map(img=>(
                 <div key={img} className=' h-[200px] w-[200px] relative rounded-md'>
                      <Image

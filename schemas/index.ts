@@ -59,5 +59,10 @@ export const formSchema = z.object({
     bathroomCount:z.number(),
     rentalPrice:z.coerce.number(),
     purchasePrice:z.coerce.number(),
-    images:z.object({url:z.string()}).array()
+    images:z.object({url:z.string()}).array(),
+    parking:z.boolean().default(false),
+    security:z.boolean().default(false),
+    internetCoverage:z.boolean().default(false),
+    pool:z.boolean().default(false),
+    waterSupply:z.boolean().default(false)
 })
