@@ -55,6 +55,7 @@ export const CreateListingForm = (
 
   const onSubmit = (vals: z.infer<typeof formSchema>) => {
     console.log(vals);
+    form.reset()
   };
 
   const isLoading = form.formState.isSubmitting;
@@ -366,7 +367,7 @@ export const CreateListingForm = (
                    </FormControl>
                    <div className=" space-y-2 leading-none">
                     <FormLabel>
-                       Is security avaible
+                       Security availability
                     </FormLabel>
                       <FormDescription>
                         This is very crutial information to your buyers and tenants only check the box is true,if 
@@ -425,7 +426,7 @@ export const CreateListingForm = (
                    </FormControl>
                    <div className=" space-y-2 leading-none">
                     <FormLabel>
-                       Parking available
+                      Swimming pool available
                     </FormLabel>
                       <FormDescription>
                         This is very crutial information to your buyers and tenants only check the box is true,if 
@@ -460,7 +461,7 @@ export const CreateListingForm = (
              />
           </div>
           <div className=" w-full py-6 px-7">
-              <Button className=" w-full" variant="secondary" type="submit">
+              <Button className=" w-full" variant="secondary" type="submit" disabled={isLoading}>
                  SUBMIT
               </Button>
           </div>

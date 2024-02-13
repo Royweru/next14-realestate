@@ -40,7 +40,7 @@ export const formSchema = z.object({
     }),
     amenities:z.string().min(1,{
         message:"amenities are required"
-    }),
+    }).default("none").optional(),
     subCounty:z.string().min(1,{
         message:"sub County is required"
     }),
@@ -56,7 +56,7 @@ export const formSchema = z.object({
     coverage:z.string().min(1,{
         message:"The area coverage is required"
     }),
-    bathroomCount:z.number(),
+    bathroomCount:z.coerce.number(),
     rentalPrice:z.coerce.number(),
     purchasePrice:z.coerce.number(),
     images:z.object({url:z.string()}).array(),
