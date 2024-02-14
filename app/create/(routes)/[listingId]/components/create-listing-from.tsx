@@ -3,7 +3,7 @@ import React,{useState,useEffect} from "react";
 
 import { formSchema } from "@/schemas";
 import { useForm } from "react-hook-form";
-
+import axios from 'axios'
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
@@ -57,9 +57,14 @@ export const CreateListingForm = (
   });
 
 
-  const onSubmit = (vals: z.infer<typeof formSchema>) => {
-    console.log(vals);
+  const onSubmit =async (vals: z.infer<typeof formSchema>) => {
+  try {
+    const data=await axios.post('/api/listing',vals)
+    console.log(data)
     form.reset()
+  } catch (error) {
+    console.error(error)
+  }
   };
 
   const isLoading = form.formState.isSubmitting;

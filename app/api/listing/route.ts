@@ -1,8 +1,4 @@
-/**
- * Handles a POST request to create a new listing.
- * @param req - The request object containing the POST data.
- * @returns A Response object with an error message if any required field is missing, otherwise proceeds with creating a new listing.
- */
+
 
 import db from "@/lib/prismadb";
 
@@ -47,8 +43,6 @@ export async function POST(req: Request) {
       { field: title, message: "title is required!" },
       { field: description, message: "description is required!" },
       { field: amenities, message: "amenities are required!" },
-      { field: rentalPrice, message: "rental price is required!" },
-      { field: purchasePrice, message: "purchase price is required!" },
       { field: coverage, message: "area coverage is required!" },
       { field: bathroomCount, message: "bathroom count is required!" },
       {
@@ -67,7 +61,7 @@ export async function POST(req: Request) {
     // Proceed with creating a new listing
     const listing = await db.listing.create({
       data: {
-        userId: session?.user.id as string,
+        userId: session?.user?.id ||"",
         categoryId,
         sizeId,
         title,
@@ -95,6 +89,7 @@ export async function POST(req: Request) {
     });
     return NextResponse.json(listing)
   } catch (error) {
+    console.log("[LISTING_POST]",error)
     return new Response("An error occurred while processing the request.", {
       status: 500,
     });
