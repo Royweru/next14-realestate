@@ -44,8 +44,8 @@ export const ImageUpload = ({
         <CldUploadWidget uploadPreset='conejwtw' onUpload={onUpload}>
              {({open})=>{
                 return (
-                    <Button onClick={()=>open()} size="lg" variant="destructive">
-                         <FaImage className=' w-7 h-7' />
+                    <Button onClick={()=>open()} size="lg" variant="destructive" type='button'>
+                         <FaImage className=' w-10 h-10' />
                     </Button>
                 )
              }}

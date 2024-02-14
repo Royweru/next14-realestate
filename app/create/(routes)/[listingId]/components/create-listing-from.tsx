@@ -49,6 +49,10 @@ export const CreateListingForm = (
       subCounty: "",
       area: "",
       coverage: "",
+      parking:false,
+      pool:false,
+      security:false,
+      internetCoverage:false
     },
   });
 
@@ -344,7 +348,7 @@ export const CreateListingForm = (
               render={({field})=>(
                 <FormItem>
                    <FormControl>
-                    <Checkbox checked={field.value} onChange={field.onChange} />
+                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                    </FormControl>
                    <div className=" space-y-2 leading-none">
                     <FormLabel>
@@ -363,7 +367,7 @@ export const CreateListingForm = (
               render={({field})=>(
                 <FormItem>
                    <FormControl>
-                    <Checkbox checked={field.value} onChange={field.onChange} />
+                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                    </FormControl>
                    <div className=" space-y-2 leading-none">
                     <FormLabel>
@@ -383,7 +387,7 @@ export const CreateListingForm = (
               render={({field})=>(
                 <FormItem>
                    <FormControl>
-                    <Checkbox checked={field.value} onChange={field.onChange} />
+                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                    </FormControl>
                    <div className=" space-y-2 leading-none">
                     <FormLabel>
@@ -403,7 +407,7 @@ export const CreateListingForm = (
               render={({field})=>(
                 <FormItem>
                    <FormControl>
-                    <Checkbox checked={field.value} onChange={field.onChange} />
+                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                    </FormControl>
                    <div className=" space-y-2 leading-none">
                     <FormLabel>
@@ -422,7 +426,7 @@ export const CreateListingForm = (
               render={({field})=>(
                 <FormItem>
                    <FormControl>
-                    <Checkbox checked={field.value} onChange={field.onChange} />
+                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                    </FormControl>
                    <div className=" space-y-2 leading-none">
                     <FormLabel>
